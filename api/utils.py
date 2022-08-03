@@ -5,13 +5,13 @@ from .serializers import NoteSerializer
 
 def getNotesList(request):
     notes = Note.objects.all().order_by('-updated')
-    serializer = NoteSerializer(notes, many=True)
-    return Response(serializer.data)
+    serializer = NoteSerializer(notes, many=True) # serialize many objects which returns a queryset
+    return Response(serializer.data) # Get data out of serializer
 
 
 def getNoteDetail(request, pk):
     notes = Note.objects.get(id=pk)
-    serializer = NoteSerializer(notes, many=False)
+    serializer = NoteSerializer(notes, many=False) # serialize only one object
     return Response(serializer.data)
 
 
@@ -22,6 +22,7 @@ def createNote(request):
     )
     serializer = NoteSerializer(note, many=False)
     return Response(serializer.data)
+
 
 def updateNote(request, pk):
     data = request.data

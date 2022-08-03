@@ -38,11 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Local
     'api.apps.ApiConfig',
 
+    # Third party
     'rest_framework',
     "corsheaders",
 ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.AllowAny',
+#     ],
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,4 +147,16 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True # Don't do this in production ****************
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:3000",
+#     "http://127.0.0.1:8000",
+# ]
+
+# CORS_ALLOW_CREDENTIALS = True
+
+# # change to https://app.example.com in production settings
+# CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']

@@ -54,3 +54,9 @@ python manage.py runserver
 </div>
 
 #
+
+### Requirements
+* django
+* django rest framework
+* django cors header
+* react-router-dom (proxy urls)

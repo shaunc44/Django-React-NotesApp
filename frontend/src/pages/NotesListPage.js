@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
 
 
 const NotesListPage = () => {
 
-    let [notes, setNotes] = useState([])
+    let [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        getNotes()
+        getNotes();
     }, [])
 
-
     let getNotes = async () => {
-
-        let response = await fetch('/api/notes/')
-        let data = await response.json()
-        setNotes(data)
+        let response = await fetch('/api/notes'); // wait for data to come back; this relative api is possible due to proxy url set in package.json
+        let data = await response.json(); // if we don't use await we return a promise
+        setNotes(data);
     }
 
     return (
@@ -31,7 +29,7 @@ const NotesListPage = () => {
                     <ListItem key={index} note={note} />
                 ))}
             </div>
-            <AddButton />
+            <AddButton/>
         </div>
     )
 }
