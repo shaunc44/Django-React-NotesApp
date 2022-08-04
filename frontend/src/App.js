@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter as Router, // this allows react routes to work after hard refreshes
   Routes,
   Route,
 } from "react-router-dom";

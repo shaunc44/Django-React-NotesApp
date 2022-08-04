@@ -24,7 +24,7 @@ const NotePage = () => {
 
 
 	let createNote = async () => {
-		fetch(`/api/notes/create/`, {
+		fetch(`/api/notes/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const NotePage = () => {
 
 
 	let updateNote = async () => {
-		fetch(`/api/notes/${noteId}/update/`, {
+		fetch(`/api/notes/${noteId}/`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const NotePage = () => {
 
 
 	let deleteNote = async () => {
-		fetch(`/api/notes/${noteId}/delete/`, {
+		fetch(`/api/notes/${noteId}/`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
@@ -61,11 +61,11 @@ const NotePage = () => {
 			console.log('DELETE TRIGGERED');
 			deleteNote();
 		}
-		else if (noteId !== 'new' && note.body !== null) {
+		else if (noteId !== 'new') {
 			console.log('UPDATE TRIGGERED');
 			updateNote();
 		} 
-		else if (noteId === 'new' && note.body !== '') {
+		else if (noteId === 'new' && note.body !== null) {
 			console.log('CREATE TRIGGERED');
 			createNote();
 		}

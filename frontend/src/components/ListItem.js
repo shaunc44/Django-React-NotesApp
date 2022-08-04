@@ -31,6 +31,8 @@ let getContent = (note) => {
 }
 
 
+// How does the route below work with django (not in django) ????
+// /note/<id> not in django ????????????????
 const ListItem = ({ note }) => {
 	return (
 		<Link to={`/note/${note.id}`}>

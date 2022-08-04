@@ -15,6 +15,7 @@ from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNo
 
 
 # This is a function based view that has a rest framework decorator
+# This is also a RESTful approach
 @api_view(['GET'])
 def getRoutes(request):
 
@@ -53,6 +54,14 @@ def getRoutes(request):
     return Response(routes)
 
 
+# RESTful API routes
+# /notes GET
+# /notes POST
+# /notes/<id> GET
+# /notes/<id> PUT
+# /notes/<id> DELETE
+
+
 @api_view(['GET', 'POST'])
 def getNotes(request):
     if request.method == 'GET':
@@ -75,39 +84,37 @@ def getNote(request, pk):
         return deleteNote(request, pk)
 
 
-@api_view(['POST'])
-def createNote(request):
-    data = request.data
-    note = Note.objects.create(body=data['body'])
-    serializer = NoteSerializer(note, many=False)
-    return Response(serializer.data)
+# @api_view(['POST'])
+# def createNote(request):
+#     data = request.data
+#     note = Note.objects.create(body=data['body'])
+#     serializer = NoteSerializer(note, many=False)
+#     return Response(serializer.data)
 
 
-# @csrf_exempt
-@api_view(['PUT'])
-def updateNote(request, pk):
-    data = request.data
-    note = Note.objects.get(id=pk)
-    serializer = NoteSerializer(instance=note, data=data)
+# @api_view(['PUT'])
+# def updateNote(request, pk):
+#     data = request.data
+#     note = Note.objects.get(id=pk)
+#     serializer = NoteSerializer(instance=note, data=data)
 
-    if serializer.is_valid():
-        serializer.save()
+#     if serializer.is_valid():
+#         serializer.save()
 
-    return Response(serializer.data)
-    # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     return Response(serializer.data)
 
 
-@api_view(['DELETE'])
-def deleteNote(request, pk):
-    note = Note.objects.get(id=pk)
-    note.delete()
-    return Response('Note was deleted!')
+# @api_view(['DELETE'])
+# def deleteNote(request, pk):
+#     note = Note.objects.get(id=pk)
+#     note.delete()
+#     return Response('Note was deleted!')
 
 
 # Set up CSRF token as per this website:
 # https://fractalideas.com/blog/making-react-and-django-play-well-together-single-page-app-model/
-def csrf(request):
-    return JsonResponse({'csrfToken': get_token(request)})
+# def csrf(request):
+#     return JsonResponse({'csrfToken': get_token(request)})
 
-def ping(request):
-    return JsonResponse({'result': 'OK'})
+# def ping(request):
+#     return JsonResponse({'result': 'OK'})
