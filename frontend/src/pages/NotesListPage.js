@@ -3,6 +3,9 @@ import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
 
 
+
+// These routes match the django REST api routes 
+
 const NotesListPage = () => {
 
     let [notes, setNotes] = useState([]);
@@ -22,6 +25,10 @@ const NotesListPage = () => {
             <div className="notes-header">
                 <h2 className="notes-title">&#9782; Notes</h2>
                 <p className="notes-count">{notes.length}</p>
+            </div>
+
+            <div>
+                <a href="/tax">Tax Page</a>
             </div>
 
             <div className="notes-list">

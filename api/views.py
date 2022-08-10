@@ -1,5 +1,5 @@
 from django.http import JsonResponse, response
-from django.middleware.csrf import get_token
+# from django.middleware.csrf import get_token
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
@@ -16,6 +16,7 @@ from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNo
 
 # This is a function based view that has a rest framework decorator
 # This is also a RESTful approach
+# This view corresponds to the Django REST endpoints at localhost:8000/api/...
 @api_view(['GET'])
 def getRoutes(request):
 

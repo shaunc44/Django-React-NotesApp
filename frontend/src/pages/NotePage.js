@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
+import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 
+
+
+// These routes match the django REST api routes 
 
 const NotePage = () => {
 	let params = useParams(); // have to use useParams as of react-router-dom v6
 	let navigate = useNavigate();
 	let noteId = params.id;
+	// console.log('noteId: ', noteId);
 
 	let [note, setNote] = useState(null); // where do note and setNote come from????
 
