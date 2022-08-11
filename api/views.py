@@ -63,6 +63,8 @@ def getRoutes(request):
 # /notes/<id> DELETE
 
 
+# The views below render the API routes listed above in the getRoutes view.
+
 @api_view(['GET', 'POST'])
 def getNotes(request):
     if request.method == 'GET':

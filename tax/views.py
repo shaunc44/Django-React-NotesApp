@@ -16,6 +16,7 @@ from django.shortcuts import render
 #     if request.method == 'GET':
 #         return getNotesList(request)
 
+
 @api_view(['GET'])
 def getTaxPage(request):
     # notes = Note.objects.all().order_by('-updated')
@@ -23,17 +24,17 @@ def getTaxPage(request):
     return Response() # Get data out of serializer
 
 
-def display_tax(request):
-    # return HttpResponse(status=204)
-    return HttpResponse("This is the TAX page")
+# def display_tax(request):
+#     # return HttpResponse(status=204)
+#     return HttpResponse("This is the TAX page")
 
 
-def ingest_file(request):
-    pass
+# def ingest_file(request):
+#     pass
 
 
-def display_1099_grid(request):
-    pass
+# def display_1099_grid(request):
+#     pass
 
 
 

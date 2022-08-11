@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { HotTable } from '@handsontable/react';
 import { registerAllModules } from 'handsontable/registry';
@@ -34,21 +34,21 @@ const TaxPage = () => {
     // let [notes, setNotes] = useState([]);
 
     // useEffect(() => {
-    //     getNotes();
+    //     getTaxPage();
     // }, [])
 
-    let getNotes = async () => {
-    	fetch('/tax');
-        // let response = await fetch('/api/notes'); // wait for data to come back; this relative api is possible due to proxy url set in package.json
-        // let data = await response.json(); // if we don't use await we return a promise
-        // setNotes(data);
-    }
+    // let getTaxPage = async () => {
+    // 	fetch('/tax');
+    //     // let response = await fetch('/api/notes'); // wait for data to come back; this relative api is possible due to proxy url set in package.json
+    //     // let data = await response.json(); // if we don't use await we return a promise
+    //     // setNotes(data);
+    // }
 
 
 	// register Handsontable's modules
 	registerAllModules();
 
-	const hotData = [
+	let hotData = [
 		["", "Tesla", "Volvo", "Toyota", "Honda"],
 		["2020", 10, 11, 12, 13],
 		["2021", 20, 11, 14, 13],
@@ -56,7 +56,7 @@ const TaxPage = () => {
 	];
 
 	return (
-		<div>
+		<div className="tax-page">
 			<p>1099 Data Validation Page</p>
 			<div id="hot-app">
 				<HotTable data={hotData} colHeaders={true} rowHeaders={true} width="600" height="300"/>

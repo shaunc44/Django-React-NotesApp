@@ -22,7 +22,7 @@ function App() {
                 <Header />
                 <Router>
                     <Routes>
-                        <Route path="/" exact element={ <NotesListPage /> } /> 
+                        <Route path="/" exact element={ <NotesListPage /> } />
                         <Route path="/note/:id" element={ <NotePage /> } />
                         <Route path="/tax" element={ <TaxPage /> } />
                     </Routes>

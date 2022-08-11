@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
+
 import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
 
@@ -27,15 +29,16 @@ const NotesListPage = () => {
                 <p className="notes-count">{notes.length}</p>
             </div>
 
-            <div>
-                <a href="/tax">Tax Page</a>
-            </div>
+            <Link to={`/tax`}>
+                <p>Tax Page</p>
+            </Link>
 
             <div className="notes-list">
                 {notes.map((note, index) => (
                     <ListItem key={index} note={note} />
                 ))}
             </div>
+
             <AddButton/>
         </div>
     )
