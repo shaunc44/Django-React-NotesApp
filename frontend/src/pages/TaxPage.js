@@ -49,17 +49,17 @@ const TaxPage = () => {
 	registerAllModules();
 
 	let hotData = [
-		["", "Tesla", "Volvo", "Toyota", "Honda"],
-		["2020", 10, 11, 12, 13],
-		["2021", 20, 11, 14, 13],
-		["2022", 30, 15, 12, 13]
+		["", "Tesla", "Volvo", "Toyota", "Honda", "Ford", "BMW", "Audi"],
+		["2020", 10000, 11000, 12000, 13000, 13000, 39000, 31000],
+		["2021", 20000, 11000, 14000, 13000, 16000, 43000, 37000],
+		["2022", 30000, 15000, 12000, 13000, 27000, 51000, 45000]
 	];
 
 	return (
 		<div className="tax-page">
 			<p>1099 Data Validation Page</p>
 			<div id="hot-app">
-				<HotTable data={hotData} colHeaders={true} rowHeaders={true} width="600" height="300"/>
+				<HotTable data={hotData} colHeaders={true} rowHeaders={false} width="auto" height="auto"/>
 			</div>
 		</div>
 	)
