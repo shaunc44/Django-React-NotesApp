@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     HashRouter as Router, // this allows react routes to work after hard refreshes
     Routes,
@@ -16,6 +16,11 @@ import TaxPage from './pages/TaxPage'
 // These routes match the actual URL routes at port 3000 & 8000 (build)
 
 function App() {
+
+    useEffect(() => {
+        document.title = "Self Service Tools"
+    }, [])
+
     return (
         <div className="container dark">
             <div className="app">

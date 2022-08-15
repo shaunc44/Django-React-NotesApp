@@ -1,60 +1,75 @@
-import axios from 'axios';
-import React, {Component} from 'react';
- 
+import React, { useState } from 'react'
 
 
-class App extends Component {
-  
-    state = {
-      // Initially, no file is selected
-      selectedFile: null
+
+const FileUpload = () => {
+
+	let [state, setState] = useState([]);
+
+
+	state = {
+		// Initially, no file is selected
+		selectedFile: null
     };
     
 
-    // On file select (from the pop up)
-    onFileChange = event => {
-      // Update the state
-      this.setState({ selectedFile: event.target.files[0] });
-    
+    // On file select (from the file finder pop up)
+    let onFileChange = (event) => {
+    	console.log('EVENT:', event);
+    	console.log('EVENT TARGET:', event.target);
+    	console.log('EVENT TARGET FILES:', event.target.files[0]);
+		// Update the state
+		setState({ selectedFile: event.target.files[0] });
+
+		console.log('STATE 1:', state);
     };
+
+
+    // console.log('STATE:', state);
     
 
     // On file upload (click the upload button)
-    onFileUpload = () => {
+    let onFileUpload = () => {
       // Create an object of formData
       const formData = new FormData();
+
+      console.log('STATE 2:', state);
     
       // Update the formData object
       formData.append(
         "myFile",
-        this.state.selectedFile,
-        this.state.selectedFile.name
+        state.selectedFile,
+        state.selectedFile.name
       );
+
+      console.log("Form Data: ", formData);
     
       // Details of the uploaded file
-      console.log(this.state.selectedFile);
+      console.log("SELECTED FILE: ", state.selectedFile);
     
+      // ******************************** TODO ***********************************
       // Request made to the backend api
       // Send formData object
-      axios.post("api/uploadfile", formData);
+      // This should be changed to the fetch() method but should it link to a Django REST API ????
+      // axios.post("api/uploadfile", formData);
     };
-    
+
 
     // File content to be displayed after
     // file upload is complete
-    fileData = () => {
+    let fileData = () => {
     
-      if (this.state.selectedFile) {
+      if (state.selectedFile) {
          
         return (
           <div>
             <h2>File Details:</h2>       
-            <p>File Name: {this.state.selectedFile.name}</p>        
-            <p>File Type: {this.state.selectedFile.type}</p>
+            <p>File Name: {state.selectedFile.name}</p>        
+            <p>File Type: {state.selectedFile.type}</p>
              
             <p>
               Last Modified:{" "}
-              {this.state.selectedFile.lastModifiedDate.toDateString()}
+              {state.selectedFile.lastModifiedDate.toDateString()}
             </p>
           </div>
         );
@@ -69,27 +84,29 @@ class App extends Component {
         );
       }
     };
-    
-    render() {
-    
-      return (
-        <div>
+
+
+	return (
+		<div>
+			<br />
             <h1>
-              GeeksforGeeks
+				1099 File Upload
             </h1>
+
             <h3>
-              File Upload using React!
+				File Upload using React!
             </h3>
+
             <div>
-                <input type="file" onChange={this.onFileChange} />
-                <button onClick={this.onFileUpload}>
-                  Upload!
+                <input type="file" onChange={onFileChange} />
+                <button onClick={onFileUpload}>
+					Upload!
                 </button>
             </div>
-          {this.fileData()}
+
+			{fileData()}
         </div>
-      );
-    }
-  }
- 
-  export default App;
+	)
+}
+
+export default FileUpload

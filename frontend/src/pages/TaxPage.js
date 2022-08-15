@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
+import FileUpload from '../components/FileUpload'
 
 import { HotTable } from '@handsontable/react';
 import { registerAllModules } from 'handsontable/registry';
@@ -7,7 +9,7 @@ import 'handsontable/dist/handsontable.full.css';
 
 /*
 TODO
-1. Create header => 1099 Upload and Validation Page
+1. (DONE) Create header => 1099 Upload and Validation Page
 2. Create 'upload 1099 file' button
 2a. Add upload file logic
 3. Display uploaded file with handsontable grid if errors exist
@@ -46,7 +48,13 @@ const TaxPage = () => {
 
 
 	// register Handsontable's modules
+	// KEY: 'non-commercial-and-evaluation' ********************************** TODO ****************
 	registerAllModules();
+
+	const settings = {
+	  licenseKey: 'non-commercial-and-evaluation',
+	  //... other options
+	}
 
 	let hotData = [
 		["", "Tesla", "Volvo", "Toyota", "Honda", "Ford", "BMW", "Audi"],
@@ -58,8 +66,13 @@ const TaxPage = () => {
 	return (
 		<div className="tax-page">
 			<p>1099 Data Validation Page</p>
+
+			<div>
+				<FileUpload/>
+			</div>
+
 			<div id="hot-app">
-				<HotTable data={hotData} colHeaders={true} rowHeaders={false} width="auto" height="auto"/>
+				<HotTable settings={settings} data={hotData} colHeaders={true} rowHeaders={false} width="auto" height="auto"/>
 			</div>
 		</div>
 	)
