@@ -9,6 +9,9 @@ from . import views
 
 urlpatterns = [
     path('', views.getTaxPage, name="tax"),
+
+    path('upload-file', views.uploadFile, name='upload-file'),
+
     # path('notes/', views.getNotes, name="notes"),
 
     # path('notes/create/', views.createNote, name="create-note"),
