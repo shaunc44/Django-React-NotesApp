@@ -2,7 +2,10 @@
 URLs for the Tax App
 """
 
+# Related third party imports
 from django.urls import path
+
+# Local application/library specific imports
 from . import views
 
 
@@ -10,7 +13,8 @@ from . import views
 urlpatterns = [
     path('', views.getTaxPage, name="tax"),
 
-    path('upload-file', views.uploadFile, name='upload-file'),
+    path('api/upload-file/', views.upload_file, name='upload_file'),
+    path('api/get-1099-results/', views.get_1099_results, name='get_1099_results'),
 
     # path('notes/', views.getNotes, name="notes"),
 

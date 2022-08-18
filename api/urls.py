@@ -2,7 +2,10 @@
 URLs for the API App
 """
 
+# Related third party imports
 from django.urls import path
+
+# Local application/library specific imports
 from . import views
 
 

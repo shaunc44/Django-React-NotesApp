@@ -1,17 +1,20 @@
+"""
+API views
+"""
+
+# Related third party imports
 from django.http import JsonResponse, response
-# from django.middleware.csrf import get_token
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.serializers import Serializer
 
+# Local application/library specific imports
 from .models import Note
 from .serializers import NoteSerializer
-from api import serializers
 from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
-
-# Create your views here.
+from api import serializers
 
 
 # This is a function based view that has a rest framework decorator
