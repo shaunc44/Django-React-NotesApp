@@ -47,6 +47,14 @@ def getTaxPage(request):
 @api_view(['POST'])
 def upload_file(request):
 
+    set_trace()
+
+    # Error Msg when checking data in PDB
+    # request.data
+    # *** rest_framework.exceptions.ParseError: JSON parse error - 'utf-8' codec can't decode byte 0xb9 in position 217: invalid start byte
+    # May need to serialize the data below ************
+    # https://stackoverflow.com/questions/44904299/serializing-uploaded-file-data-django-rest-framework
+
     if request.method == 'POST':
         form = Upload1099FileForm(request.POST, request.FILES)
 
@@ -72,6 +80,7 @@ def upload_file(request):
             return HttpResponseRedirect('/tax')
 
     else:
+        print('UPLOAD 1099 FILE (NO POST REQUEST) >>', e)
         form = Upload1099FileForm()
         context = {}
         # context.update({'keyword_form': form})

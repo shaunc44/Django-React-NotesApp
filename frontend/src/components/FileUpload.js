@@ -31,12 +31,21 @@ const FileUpload = () => {
     let createUpload = async (formData) => {
         console.log('In createUpload method ****');
         
+        // Print form data to console (this works)
+        for (let [key, value] of formData.entries()) {
+            console.log(`Key 2: ${key} | Value 2: ${value}`);
+        }
+
+        // console.log('JSON Form Data >>', JSON.stringify(formData));
+        
         fetch(`/tax/api/upload-file/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
             }, 
-            body: JSON.stringify(formData)
+            body: formData
+            // body: JSON.stringify(formData)
         })
     };
     
@@ -49,21 +58,15 @@ const FileUpload = () => {
         console.log('STATE 2:', state);
 
         // Update the formData object
-        formData.append(
-            "uploadFile",
-            state.selectedFile,
-            state.selectedFile.name
-        );
+        formData.append("uploadFile", state.selectedFile);
+        formData.append("uploadFileName", state.selectedFile.name);
 
-        // Form Data is not printing here ....
-        // ************  TODO *****************
-        // https://www.javascripttutorial.net/web-apis/javascript-formdata/
-        // console.log("Form Data: ", formData);
-        // formData can't be console.logged ....
-        // for (var key in formData.entries()) {
-        //     console.log(key);
-        //     // console.log(key[0] + ' - ' + key[1]);
-        // }
+        // Print form data to console (this works)
+        for (let [key, value] of formData.entries()) {
+            console.log(`Key: ${key} | Value: ${value}`);
+        }
+        // Key: uploadFile | Value: [object File]
+        // Key: uploadFileName | Value: test_1099.xlsx
 
         // Details of the uploaded file
         console.log("SELECTED FILE: ", state.selectedFile);
