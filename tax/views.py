@@ -15,6 +15,7 @@ from rest_framework.serializers import Serializer
 
 # Local application/library specific imports
 from .forms import Upload1099FileForm
+from .serializers import FileSerializer
 
 
 
@@ -47,6 +48,8 @@ def getTaxPage(request):
 @api_view(['POST'])
 def upload_file(request):
 
+    # request.data is empty >> <QueryDict: {}>
+
     set_trace()
 
     # Error Msg when checking data in PDB
@@ -55,7 +58,13 @@ def upload_file(request):
     # May need to serialize the data below ************
     # https://stackoverflow.com/questions/44904299/serializing-uploaded-file-data-django-rest-framework
 
+    # ******
+    # rest_framework.exceptions.ParseError: Multipart form parse error - Invalid boundary in multipart: None
+
     if request.method == 'POST':
+        # see msg above
+        serializer = FileSerializer(data=request.data)
+
         form = Upload1099FileForm(request.POST, request.FILES)
 
         try:

@@ -10,4 +10,4 @@ class Upload1099FileForm(forms.Form):
     # title = forms.CharField()
     # QUICK_SEARCH_EMAILS = get_quick_search_emails()
     # receiving_person = forms.ChoiceField(choices=QUICK_SEARCH_EMAILS, widget=forms.Select())
-    upload_file = forms.FileField()
+    file = forms.FileField()
